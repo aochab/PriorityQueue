@@ -1,4 +1,3 @@
-#pragma once
 #ifndef _QUEUE_INCLUDE_
 #define _QUEUE_INCLUDE_
 
