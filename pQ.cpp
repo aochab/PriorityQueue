@@ -32,7 +32,7 @@ void UpdateUp( PQueue* q, int l, int p )
 	int i = p;
 	int j = ( i - 1 ) / 2; 
 	PQItem tmp = q->pQueue[i];
-	while( ( i > 0 ) && ( q->pQueue[j].nPrior < tmp.nPrior ) )// i nie przekroczy³o l && //j ty > zapamientego i ) 
+	while( ( i > 0 ) && ( q->pQueue[j].nPrior < tmp.nPrior ) )// i nie przekroczylo l && //j ty > zapamientego i ) 
 	{
 		q->pQueue[i] = q->pQueue[j];	//przesunac element z j do i w dol
 		i = j;
@@ -94,11 +94,11 @@ int PQDequeue( PQueue* q )
 	}
 
 	int i = --q->PQCurrSize;
-	int x = q->pQueue[0].nKey;	//zwraca wartoœæ indeksu 0
+	int x = q->pQueue[0].nKey;	//zwraca wartoÅ“Ã¦ indeksu 0
 	
 	q->pQueue[0].nKey = q->pQueue[i].nKey; //Wpisuje ostatni do 0-ego
-	q->pQueue[0].nPrior = q->pQueue[i].nPrior; //nie kopiuje ca³ej struktury, bo niebezpieczne gdy dynamicznie alokowana tablica
-	UpdateDown( q, 0, i ); 	//uaktualniæ w do³ od indeksu 0 do rozmiaru 
+	q->pQueue[0].nPrior = q->pQueue[i].nPrior; //nie kopiuje calj struktury, bo niebezpieczne gdy dynamicznie alokowana tablica
+	UpdateDown( q, 0, i ); 	//uaktualniÃ¦ w doÂ³ od indeksu 0 do rozmiaru 
 	
 	return x;
 }
