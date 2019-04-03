@@ -3,7 +3,7 @@
 #include "pQ.h"
 
 
-void UpdateDown( PQueue* q, int l, int p )
+void UpdateDown( PQueue* q, int l, int p ) //Update heap
 {
 	if( l == p ) return;
 	int i = l;
@@ -32,9 +32,9 @@ void UpdateUp( PQueue* q, int l, int p )
 	int i = p;
 	int j = ( i - 1 ) / 2; 
 	PQItem tmp = q->pQueue[i];
-	while( ( i > 0 ) && ( q->pQueue[j].nPrior < tmp.nPrior ) )// i nie przekroczylo l && //j ty > zapamientego i ) 
+	while( ( i > 0 ) && ( q->pQueue[j].nPrior < tmp.nPrior ) )
 	{
-		q->pQueue[i] = q->pQueue[j];	//przesunac element z j do i w dol
+		q->pQueue[i] = q->pQueue[j];	
 		i = j;
 		j = ( i - 1 ) / 2;
 	}
@@ -44,7 +44,7 @@ void UpdateUp( PQueue* q, int l, int p )
 //-------------------------------------------------------------------------------------------------
 PQueue* PQInit( int nSize )
 {
-	PQueue* q = (PQueue*)calloc( 1, sizeof( PQueue ) );
+	PQueue* q = (PQueue*)calloc( 1, sizeof( PQueue ) ); //Create queue
 	if( !q )
 	{
 		printf( "ERROR! PQInit - calloc!\n" );
@@ -71,7 +71,7 @@ int PQisEmpty( PQueue* q )
 }
 
 //-------------------------------------------------------------------------------------------------
-void PQEnqueue( PQueue* q, int nKey, int nPrior )
+void PQEnqueue( PQueue* q, int nKey, int nPrior ) //Add item on heap
 {
 	if( q->PQCurrSize == q->PQSize )
 	{
@@ -94,11 +94,11 @@ int PQDequeue( PQueue* q )
 	}
 
 	int i = --q->PQCurrSize;
-	int x = q->pQueue[0].nKey;	//zwraca wartoœæ indeksu 0
+	int x = q->pQueue[0].nKey;	
 	
-	q->pQueue[0].nKey = q->pQueue[i].nKey; //Wpisuje ostatni do 0-ego
-	q->pQueue[0].nPrior = q->pQueue[i].nPrior; //nie kopiuje calj struktury, bo niebezpieczne gdy dynamicznie alokowana tablica
-	UpdateDown( q, 0, i ); 	//uaktualniæ w do³ od indeksu 0 do rozmiaru 
+	q->pQueue[0].nKey = q->pQueue[i].nKey; //Insert the last item to the beginning
+	q->pQueue[0].nPrior = q->pQueue[i].nPrior; 
+	UpdateDown( q, 0, i ); 	
 	
 	return x;
 }
@@ -106,7 +106,7 @@ int PQDequeue( PQueue* q )
 //-------------------------------------------------------------------------------------------------
 void PQClearQueue( PQueue* q )
 {
-	memset( q->pQueue, 0, q->PQSize * sizeof( PQItem ) );
+	memset( q->pQueue, 0, q->PQSize * sizeof( PQItem ) ); 
 	q->PQCurrSize = 0;
 }
 
@@ -127,7 +127,7 @@ void PQPrint( PQueue* q )
 }
 
 //-------------------------------------------------------------------------------------------------
-void DecreaseKey( PQueue* q, int nKey, int nPrior )
+void DecreaseKey( PQueue* q, int nKey, int nPrior ) //Reduces the item's priority
 {
 	if( nPrior < q->pQueue[nKey].nPrior )
 	{
@@ -137,7 +137,7 @@ void DecreaseKey( PQueue* q, int nKey, int nPrior )
 }
 
 //-------------------------------------------------------------------------------------------------
-void IncreaseKey( PQueue* q, int nKey, int nPrior )
+void IncreaseKey( PQueue* q, int nKey, int nPrior ) //Increases the item's priority
 {
 	if( nPrior > q->pQueue[nKey].nPrior )
 	{
