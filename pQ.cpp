@@ -71,7 +71,7 @@ int PQisEmpty( PQueue* q )
 }
 
 //-------------------------------------------------------------------------------------------------
-void PQEnqueue( PQueue* q, int nKey, int nPrior ) //Add item on heap
+void PQEnqueue( PQueue* q, int nKey, int nPrior ) //Add item to the heap
 {
 	if( q->PQCurrSize == q->PQSize )
 	{
