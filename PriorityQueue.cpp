@@ -7,13 +7,14 @@
 
 using namespace std;
 
-void input( PQueue* q, int nSize );
+void input( PQueue* q, int nSize ); //insert random items
 
 int main()
 {
 	srand( (unsigned int)time( NULL ) );
 	PQueue* q = PQInit( SIZE );
 
+	//Test functions
 	input( q, SIZE - 1 );
 
 	printf( "Queue:\n" );
@@ -25,7 +26,7 @@ int main()
 	PQPrint( q );
 	printf( "\n\n" );
 
-	printf( "Dwa enqueue\n" );
+	printf( "Two enqueue\n" );
 	input( q, 2 );
 
 	PQPrint( q );
@@ -36,7 +37,7 @@ int main()
 	PQPrint( q );
 	printf( "\n\n" );
 
-	printf( "Dwa enqueue\n" );
+	printf( "Two enqueue\n" );
 	input( q, 2 );
 
 	PQPrint( q );
@@ -49,7 +50,7 @@ int main()
 	PQPrint( q );
 	printf( "\n\n" );
 
-	printf( "Trzy enqueue\n" );
+	printf( "Three enqueue\n" );
 	input( q, 3 );
 
 	PQPrint( q );
